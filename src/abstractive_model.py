@@ -71,10 +71,11 @@ if __name__ == "__main__":
     preprocessor = Preprocessor()
     model = AbstractiveModel(preprocessor=preprocessor)
 
-    nrows_for_training = 1000  # Specify the number of rows to train on
+    nrows_for_training = 10  # Specify the number of rows to train on
     model.train("data/data.csv", epochs=3,
                 batch_size=2, nrows=nrows_for_training)
 
+    large_text = "In a significant development today, scientists at the International Institute of Advanced Research announced a groundbreaking discovery in the field of renewable energy. The new technology, which harnesses the power of ocean currents, promises to revolutionize the energy industry. Dr. Emily Stanton, the lead researcher on the project, explained that the technology works by utilizing underwater turbines to generate electricity. These turbines are designed to be highly efficient and environmentally friendly, offering a sustainable alternative to fossil fuels. In conclusion, while there are hurdles to overcome, the promise of harnessing the power of ocean currents for renewable energy is a beacon of hope. This innovative approach could play a crucial role in the global transition to sustainable energy, marking a significant step forward in the effort to combat climate change and protect our planet for future generations."
     summary = model.generate_summary(
-        "The quick brown fox jumps over the lazy dog.")
+        large_text)
     print(f"Generated summary: {summary}")
